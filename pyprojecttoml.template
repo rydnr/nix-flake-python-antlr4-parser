@@ -1,0 +1,33 @@
+# pyprojecttoml.template
+#
+# This file is the template for rydnr/nix-flake-python-antlr4-parser pyproject.toml
+#
+# Copyright (C) 2023-today rydnr's rydnr/nix-flake-python-antlr4-parser
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+[tool.poetry]
+name = "@pname@"
+version = "@version@"
+description = "@desc@"
+authors = [ @authors@ ]
+homepage = "@homepage@"
+packages = [{include = "@package@"}]
+
+[tool.poetry.dependencies]
+python = "^@pythonMajorMinorVersion@"
+antlr4-python@pythonMajorVersion@-runtime = "^@antlr4PythonRuntime@"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
