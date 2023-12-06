@@ -1,7 +1,7 @@
 """
-rydnr/antlr/nix_flake/generated/__init__.py
+rydnr/nix/flake/parser/__init__.py
 
-This file ensures rydnr.antlr4.nix_flake.generated is a package.
+This file ensures rydnr.nix.flake.parser is a namespace.
 
 Copyright (C) 2023-today rydnr's rydnr/nix-flake-python-antlr4-parser
 
@@ -20,6 +20,4 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 __path__ = __import__("pkgutil").extend_path(__path__, __name__)
 
-from .NixFlakeLexer import NixFlakeLexer
-from .NixFlakeParser import NixFlakeParser
-from .NixFlakeListener import NixFlakeListener
+from .antlr4_listener import Antlr4Listener

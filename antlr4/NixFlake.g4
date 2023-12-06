@@ -1,40 +1,53 @@
+// antlr4/NixFlake.g4
+//
+// This file defines the experimental ANTLR4 grammar for parsing Nix flakes.
+//
+// Copyright (C) 2023-today rydnr's rydnr/nix-flake-python-antlr4-parser
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // $antlr-format alignTrailingComments true, columnLimit 150, minEmptyLines 1, maxEmptyLinesToKeep 1, reflowComments false, useTab false
 // $antlr-format allowShortRulesOnASingleLine false, allowShortBlocksOnASingleLine true, alignSemicolons hanging, alignColons hanging
 
 grammar NixFlake;
 
 flake
-    : LCURLY description? inputs? RCURLY EOF
+    : '{' description? inputs? outputs? '}' EOF
     ;
 
-description: DESCRIPTION_LITERAL EQUAL STRING SEMI;
+description: 'description' '=' STRING ';';
 
-inputs: INPUTS_LITERAL EQUAL REC_LITERAL? LCURLY input+ RCURLY SEMI;
+inputs: 'inputs' '=' 'rec'? '{' input+ '}' ';';
 
 input: input_url_assignment
      | input_obj;
 
-input_url_assignment : IDENTIFIER DOT URL_LITERAL EQUAL STRING SEMI;
+input_url_assignment : IDENTIFIER '.url' '=' STRING ';';
 
-input_obj : IDENTIFIER EQUAL LCURLY input_pin* url RCURLY SEMI;
+input_obj : IDENTIFIER '=' '{' input_pin* url '}' ';';
 
 input_pin:
-    INPUTS_LITERAL DOT IDENTIFIER DOT FOLLOWS_LITERAL EQUAL STRING SEMI;
+    'inputs.' IDENTIFIER '.follows' '=' STRING ';';
 
-url:
-    URL_LITERAL EQUAL STRING SEMI;
+url: 'url' '=' STRING ';';
+
+outputs: 'outputs' '=' .*?;
 
 // Lexer
 
 SINGLE_LINE_COMMENT
     : '#' .*? (NEWLINE | EOF) -> skip
     ;
-
-DESCRIPTION_LITERAL: 'description';
-INPUTS_LITERAL: 'inputs';
-FOLLOWS_LITERAL: 'follows';
-REC_LITERAL: 'rec';
-URL_LITERAL: 'url';
 
 STRING
     : '"' DOUBLE_QUOTE_CHAR* '"'
@@ -62,34 +75,8 @@ fragment ESCAPE_SEQUENCE
     )
     ;
 
-NUMBER
-    : INT ('.' [0-9]*)? EXP? // +1.e2, 1234, 1234.5
-    | '.' [0-9]+ EXP?        // -.2e3
-    | '0' [xX] HEX+          // 0x12345678
-    ;
-
-LCURLY: '{';
-RCURLY: '}';
-EQUAL: '=';
-SEMI : ';';
-DOT : '.';
-
-SYMBOL
-    : '+'
-    | '-'
-    ;
-
 fragment HEX
     : [0-9a-fA-F]
-    ;
-
-fragment INT
-    : '0'
-    | [1-9] [0-9]*
-    ;
-
-fragment EXP
-    : [Ee] SYMBOL? [0-9]*
     ;
 
 IDENTIFIER
@@ -125,3 +112,7 @@ fragment NEWLINE
 WS
     : [ \t\n\r\u00A0\uFEFF\u2003]+ -> skip
     ;
+
+FILTER
+ : . -> skip
+ ;

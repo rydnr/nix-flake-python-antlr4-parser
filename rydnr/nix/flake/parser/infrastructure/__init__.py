@@ -1,7 +1,7 @@
 """
-rydnr/antlr/nix_flake/__init__.py
+rydnr/nix/flake/parser/infrastructure/__init__.py
 
-This file ensures rydnr.antlr4.nix_flake is a namespace.
+This file ensures rydnr.nix.flake.parser.infrastructure is a namespace.
 
 Copyright (C) 2023-today rydnr's rydnr/nix-flake-python-antlr4-parser
 

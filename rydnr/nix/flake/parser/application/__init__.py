@@ -1,7 +1,7 @@
 """
-rydnr/antlr4/__init__.py
+rydnr/nix/flake/parser/application/__init__.py
 
-This file ensures rydnr.antlr4 is a namespace.
+This file ensures rydnr.nix.flake.parser.application is a namespace.
 
 Copyright (C) 2023-today rydnr's rydnr/nix-flake-python-antlr4-parser
 
@@ -19,3 +19,5 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 __path__ = __import__("pkgutil").extend_path(__path__, __name__)
+
+from .nix_flake_python_antlr4_parser import NixFlakePythonAntlr4Parser

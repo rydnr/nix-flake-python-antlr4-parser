@@ -21,12 +21,17 @@ name = "@pname@"
 version = "@version@"
 description = "@desc@"
 authors = [ @authors@ ]
+README = "README.md"
 homepage = "@homepage@"
 packages = [{include = "@package@"}]
 
 [tool.poetry.dependencies]
-python = "^@pythonMajorMinorVersion@"
 antlr4-python@pythonMajorVersion@-runtime = "^@antlr4PythonRuntime@"
+python = "^@pythonMajorMinorVersion@"
+pythoneda-shared-nix-flake-shared = "^@pythonedaSharedNixFlakeShared@"
+pythoneda-shared-pythoneda-application = "^@pythonedaSharedPythonedaApplication@"
+pythoneda-shared-pythoneda-banner = "^@pythonedaSharedPythonedaBanner@"
+pythoneda-shared-pythoneda-domain = "^@pythonedaSharedPythonedaDomain@"
 
 [build-system]
 requires = ["poetry-core"]
