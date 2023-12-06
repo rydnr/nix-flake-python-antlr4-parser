@@ -20,6 +20,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 from antlr4 import CommonTokenStream, FileStream, ParseTreeWalker
 from antlr4.error.ErrorListener import ErrorListener
+import json
 from pythoneda import EventListener, listen
 from pythoneda.shared.git import GitRepo
 from pythoneda.shared.nix_flake import GithubUrlFor, NixFlakeInput
@@ -109,8 +110,10 @@ class Antlr4Listener(EventListener, NixFlakeListener):
         walker.walk(listener, tree)
         for input in listener.nix_flake_inputs:
             result.append(NixFlakeInputFound(input))
-            if cls._json_output:
-                print(input)
+        if cls._json_output:
+            print(
+                json.dumps(result, default=NixFlakeInputFound.default_json_serializer)
+            )
         return result
 
     def exitInput(self, ctx: NixFlakeParser.InputContext):
