@@ -20,7 +20,7 @@
   description = "Experimental Python package to parse Nix flakes";
   inputs = rec {
     flake-utils.url = "github:numtide/flake-utils/v1.0.0";
-    nixos.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixos.url = "github:NixOS/nixpkgs/23.11";
     pythoneda-shared-nix-flake-shared = {
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixos.follows = "nixos";
@@ -33,7 +33,7 @@
     pythoneda-shared-pythoneda-banner = {
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixos.follows = "nixos";
-      url = "github:pythoneda-shared-pythoneda-def/banner/0.0.35";
+      url = "github:pythoneda-shared-pythoneda-def/banner/0.0.37";
     };
     pythoneda-shared-pythoneda-domain = {
       inputs.flake-utils.follows = "flake-utils";
@@ -64,7 +64,7 @@
       let
         org = "rydnr";
         repo = "nix-flake-python-antlr4-parser";
-        version = "0.0.3";
+        version = "0.0.4";
         pname = "${org}-${repo}";
         pythonpackage = "rydnr.nix.flake.parser";
         package = builtins.replaceStrings [ "." ] [ "/" ] pythonpackage;
