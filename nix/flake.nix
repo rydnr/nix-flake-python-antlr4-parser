@@ -153,7 +153,6 @@
 
             nativeBuildInputs = with python.pkgs; [
               pip
-              pkgs.jq
               poetry-core
               pkgs.antlr4
             ];
@@ -205,7 +204,6 @@
               popd
               mkdir $out/dist $out/bin
               cp dist/${wheelName} $out/dist
-              jq ".url = \"$out/dist/${wheelName}\"" $out/lib/python${pythonMajorMinorVersion}/site-packages/${pnameWithUnderscores}-${version}.dist-info/direct_url.json > temp.json && mv temp.json $out/lib/python${pythonMajorMinorVersion}/site-packages/${pnameWithUnderscores}-${version}.dist-info/direct_url.json
               cp /build/$sourceRoot/entrypoint.sh $out/bin/${entrypoint}.sh
               chmod +x $out/bin/${entrypoint}.sh
               cp -r /build/$sourceRoot/templates $out/lib/python${pythonMajorMinorVersion}/site-packages
