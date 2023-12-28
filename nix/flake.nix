@@ -64,7 +64,7 @@
       let
         org = "rydnr";
         repo = "nix-flake-python-antlr4-parser";
-        version = "0.0.4";
+        version = "0.0.5";
         pname = "${org}-${repo}";
         pythonpackage = "rydnr.nix.flake.parser";
         package = builtins.replaceStrings [ "." ] [ "/" ] pythonpackage;
