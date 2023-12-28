@@ -108,8 +108,8 @@ class Antlr4Listener(EventListener, NixFlakeListener):
         listener = Antlr4Listener(event.flake_nix_file)
         walker = ParseTreeWalker()
         walker.walk(listener, tree)
-        for input in listener.nix_flake_inputs:
-            result.append(NixFlakeInputFound(input))
+        for aux in listener.nix_flake_inputs:
+            result.append(NixFlakeInputFound(aux))
         if cls._json_output:
             print(
                 json.dumps(result, default=NixFlakeInputFound.default_json_serializer)
