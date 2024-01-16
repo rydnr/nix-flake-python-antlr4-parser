@@ -1,3 +1,4 @@
+# vim: set fileencoding=utf-8
 """
 rydnr/nix/flake/parser/antlr4_listener.py
 
@@ -21,7 +22,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 from antlr4 import CommonTokenStream, FileStream, ParseTreeWalker
 from antlr4.error.ErrorListener import ErrorListener
 import json
-from pythoneda import EventListener, listen
+from pythoneda.shared import EventListener, listen
 from pythoneda.shared.git import GitRepo
 from pythoneda.shared.nix_flake import GithubUrlFor, NixFlakeInput
 from rydnr.nix.flake.parser.events import FlakeNixFileFound, NixFlakeInputFound

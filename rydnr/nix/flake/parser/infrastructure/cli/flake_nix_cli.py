@@ -1,3 +1,4 @@
+# vim: set fileencoding=utf-8
 """
 rydnr/nix/flake/parser/infrastructure/cli/flake_nix_cli.py
 
@@ -20,9 +21,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 from argparse import ArgumentParser
 import os
-from pythoneda import PrimaryPort
-from pythoneda.application import PythonEDA
-from pythoneda.infrastructure.cli import CliHandler
+from pythoneda.shared import PrimaryPort
+from pythoneda.shared.application import PythonEDA
+from pythoneda.shared.infrastructure.cli import CliHandler
 from rydnr.nix.flake.parser.events import FlakeNixFileFound
 import sys
 
@@ -83,7 +84,7 @@ class FlakeNixCli(CliHandler, PrimaryPort):
         """
         Processes the command specified from the command line.
         :param app: The PythonEDA instance.
-        :type app: pythoneda.application.PythonEDA
+        :type app: pythoneda.shared.application.PythonEDA
         :param args: The CLI args.
         :type args: argparse.args
         """

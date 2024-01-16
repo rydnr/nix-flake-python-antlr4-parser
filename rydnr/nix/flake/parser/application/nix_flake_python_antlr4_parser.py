@@ -1,3 +1,4 @@
+# vim: set fileencoding=utf-8
 """
 rydnr/nix/flake/parser/application/nix_flake_python_antlr4_parser.py
 
@@ -19,8 +20,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 import asyncio
-from pythoneda.application import enable, PythonEDA
-from pythoneda.infrastructure.cli import LoggingConfigCli
+from pythoneda.shared.application import enable, PythonEDA
+from pythoneda.shared.infrastructure.cli import LoggingConfigCli
 
 
 @enable(LoggingConfigCli)
@@ -45,8 +46,9 @@ class NixFlakePythonAntlr4Parser(PythonEDA):
         # by rydnr/nix-flake-python-antlr4-parser flake.
         try:
             from rydnr.nix.flake.parser.application.nix_flake_python_antlr4_parser_banner import (
-                NixFlakePythonAntlr4ParserBanner
+                NixFlakePythonAntlr4ParserBanner,
             )
+
             banner = NixFlakePythonAntlr4ParserBanner()
         except ImportError:
             banner = None
