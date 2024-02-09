@@ -29,9 +29,9 @@ packages = [{include = "@package@"}]
 antlr4-python@pythonMajorVersion@-runtime = "^@antlr4PythonRuntime@"
 python = "^@pythonMajorMinorVersion@"
 pythoneda-shared-nix-flake-shared = "^@pythonedaSharedNixFlakeShared@"
-pythoneda-shared-pythoneda-application = "^@pythonedaSharedPythonedaApplication@"
-pythoneda-shared-pythoneda-banner = "^@pythonedaSharedPythonedaBanner@"
-pythoneda-shared-pythoneda-domain = "^@pythonedaSharedPythonedaDomain@"
+pythoneda-shared-pythonlang-application = "^@pythonedaSharedPythonlangApplication@"
+pythoneda-shared-pythonlang-banner = "^@pythonedaSharedPythonlangBanner@"
+pythoneda-shared-pythonlang-domain = "^@pythonedaSharedPythonlangDomain@"
 
 [build-system]
 requires = ["poetry-core"]
