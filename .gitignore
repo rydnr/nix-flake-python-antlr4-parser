@@ -7,3 +7,6 @@ lib64
 pyvenv.cfg
 result
 rydnr/nix/flake/parser/generated/*
+deps.txt
+deps.dot
+deps.png

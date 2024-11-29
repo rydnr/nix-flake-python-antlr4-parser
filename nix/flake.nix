@@ -17,10 +17,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 {
-  description = "Experimental Python package to parse Nix flakes";
+  description = "Nix flake for https://github.com/rydnr/nix-flake-python-antlr4-parser";
   inputs = rec {
     flake-utils.url = "github:numtide/flake-utils/v1.0.0";
-    nixos.url = "github:NixOS/nixpkgs/23.11";
+    nixos.url = "github:NixOS/nixpkgs/24.05";
     pythoneda-shared-nix-flake-shared = {
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixos.follows = "nixos";
@@ -219,13 +219,7 @@
           };
       in rec {
         apps = rec {
-          default = nix-flake-python-antlr4-parser-default;
-          nix-flake-python-antlr4-parser-default =
-            nix-flake-python-antlr4-parser-python311;
-          nix-flake-python-antlr4-parser-python38 = shared.app-for {
-            package = packages.nix-flake-python-antlr4-parser-python38;
-            inherit entrypoint;
-          };
+          default = nix-flake-python-antlr4-parser-python312;
           nix-flake-python-antlr4-parser-python39 = shared.app-for {
             package = packages.nix-flake-python-antlr4-parser-python39;
             inherit entrypoint;
@@ -238,26 +232,19 @@
             package = packages.nix-flake-python-antlr4-parser-python311;
             inherit entrypoint;
           };
+          nix-flake-python-antlr4-parser-python312 = shared.app-for {
+            package = packages.nix-flake-python-antlr4-parser-python312;
+            inherit entrypoint;
+          };
+          nix-flake-python-antlr4-parser-python313 = shared.app-for {
+            package = packages.nix-flake-python-antlr4-parser-python313;
+            inherit entrypoint;
+          };
         };
         defaultApp = apps.default;
         defaultPackage = packages.default;
         devShells = rec {
-          default = nix-flake-python-antlr4-parser-default;
-          nix-flake-python-antlr4-parser-default =
-            nix-flake-python-antlr4-parser-python311;
-          nix-flake-python-antlr4-parser-python38 = shared.devShell-for {
-            banner =
-              "${packages.nix-flake-python-antlr4-parser-python38}/bin/banner.sh";
-            extra-namespaces = "rydnr";
-            nixpkgs-release = nixpkgsRelease;
-            package = packages.nix-flake-python-antlr4-parser-python38;
-            pythoneda-shared-pythonlang-banner =
-              pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python38;
-            pythoneda-shared-pythonlang-domain =
-              pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python38;
-            python = pkgs.python38;
-            inherit archRole layer org pkgs repo space;
-          };
+          default = nix-flake-python-antlr4-parser-python312;
           nix-flake-python-antlr4-parser-python39 = shared.devShell-for {
             banner =
               "${packages.nix-flake-python-antlr4-parser-python39}/bin/banner.sh";
@@ -297,24 +284,35 @@
             python = pkgs.python311;
             inherit archRole layer org pkgs repo space;
           };
+          nix-flake-python-antlr4-parser-python312 = shared.devShell-for {
+            banner =
+              "${packages.nix-flake-python-antlr4-parser-python312}/bin/banner.sh";
+            extra-namespaces = "rydnr";
+            nixpkgs-release = nixpkgsRelease;
+            package = packages.nix-flake-python-antlr4-parser-python312;
+            pythoneda-shared-pythonlang-banner =
+              pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python312;
+            pythoneda-shared-pythonlang-domain =
+              pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python312;
+            python = pkgs.python312;
+            inherit archRole layer org pkgs repo space;
+          };
+          nix-flake-python-antlr4-parser-python313 = shared.devShell-for {
+            banner =
+              "${packages.nix-flake-python-antlr4-parser-python313}/bin/banner.sh";
+            extra-namespaces = "rydnr";
+            nixpkgs-release = nixpkgsRelease;
+            package = packages.nix-flake-python-antlr4-parser-python313;
+            pythoneda-shared-pythonlang-banner =
+              pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python313;
+            pythoneda-shared-pythonlang-domain =
+              pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python313;
+            python = pkgs.python313;
+            inherit archRole layer org pkgs repo space;
+          };
         };
         packages = rec {
-          default = nix-flake-python-antlr4-parser-default;
-          nix-flake-python-antlr4-parser-default =
-            nix-flake-python-antlr4-parser-python311;
-          nix-flake-python-antlr4-parser-python38 =
-            nix-flake-python-antlr4-parser-for {
-              antlr4-python-runtime = pkgs.python38.pkgs.antlr4-python3-runtime;
-              python = pkgs.python38;
-              pythoneda-shared-nix-flake-shared =
-                pythoneda-shared-nix-flake-shared.packages.${system}.pythoneda-shared-nix-flake-shared-python38;
-              pythoneda-shared-pythonlang-application =
-                pythoneda-shared-pythonlang-application.packages.${system}.pythoneda-shared-pythonlang-application-python38;
-              pythoneda-shared-pythonlang-banner =
-                pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python38;
-              pythoneda-shared-pythonlang-domain =
-                pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python38;
-            };
+          default = nix-flake-python-antlr4-parser-python312;
           nix-flake-python-antlr4-parser-python39 =
             nix-flake-python-antlr4-parser-for {
               antlr4-python-runtime = pkgs.python39.pkgs.antlr4-python3-runtime;
@@ -355,6 +353,34 @@
                 pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python311;
               pythoneda-shared-pythonlang-domain =
                 pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python311;
+            };
+          nix-flake-python-antlr4-parser-python312 =
+            nix-flake-python-antlr4-parser-for {
+              antlr4-python-runtime =
+                pkgs.python312.pkgs.antlr4-python3-runtime;
+              python = pkgs.python312;
+              pythoneda-shared-nix-flake-shared =
+                pythoneda-shared-nix-flake-shared.packages.${system}.pythoneda-shared-nix-flake-shared-python312;
+              pythoneda-shared-pythonlang-application =
+                pythoneda-shared-pythonlang-application.packages.${system}.pythoneda-shared-pythonlang-application-python312;
+              pythoneda-shared-pythonlang-banner =
+                pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python312;
+              pythoneda-shared-pythonlang-domain =
+                pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python312;
+            };
+          nix-flake-python-antlr4-parser-python313 =
+            nix-flake-python-antlr4-parser-for {
+              antlr4-python-runtime =
+                pkgs.python313.pkgs.antlr4-python3-runtime;
+              python = pkgs.python313;
+              pythoneda-shared-nix-flake-shared =
+                pythoneda-shared-nix-flake-shared.packages.${system}.pythoneda-shared-nix-flake-shared-python313;
+              pythoneda-shared-pythonlang-application =
+                pythoneda-shared-pythonlang-application.packages.${system}.pythoneda-shared-pythonlang-application-python313;
+              pythoneda-shared-pythonlang-banner =
+                pythoneda-shared-pythonlang-banner.packages.${system}.pythoneda-shared-pythonlang-banner-python313;
+              pythoneda-shared-pythonlang-domain =
+                pythoneda-shared-pythonlang-domain.packages.${system}.pythoneda-shared-pythonlang-domain-python313;
             };
         };
       });
